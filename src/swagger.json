@@ -1,0 +1,107 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Atlas",
+        "description": "Essa é uma documentação para a Atlas API.",
+        "version": "1.0.0",
+        "contact": {
+            "email": "sofiarodrigues45@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Cria uma novo usuário",
+                "description": "Cria um novo usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "admin:": {
+                                        "type": "bool"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "date"
+                                    },
+                                    "updated_at": {
+                                        "type": "date"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Sofia",
+                                    "email": "sofia@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin:": {
+                                            "type": "bool"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "updated_at": {
+                                            "type": "date"
+                                        }
+                                    },
+                                    "example": {
+                                        "admin": "false",
+                                        "id": "7740203a-51e1-4381-930d-c11215b77823",
+                                        "name": "Sofia",
+                                        "email": "sofia@gmail.com",
+                                        "created_at": "2022-01-21T19:47:07.773Z",
+                                        "updated_at": "2022-01-21T19:47:07.773Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Usuário já existe",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "example": {
+                                        "error": "Usuário já existe"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
