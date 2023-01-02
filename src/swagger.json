@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Atlas",
-        "description": "Essa é uma documentação para a Atlas API.",
+        "title": "Desafio 5",
+        "description": "Essa é uma documentação para a API do desafio 4.",
         "version": "1.0.0",
         "contact": {
             "email": "sofiarodrigues45@gmail.com"
@@ -100,8 +100,79 @@
                         }
                     }
                 }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "Lista todos os usuários",
+                "description": "Lista todos os usuários. Rota acessível apenas para administradores.",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "user_id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "400": {
+                        "description": "Usuário não é um administrador"
+                    }
+                }
             }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Lista perfil de usuário por ID",
+                "description": "Lista perfil de usuário por ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+            
+        },
+        "/users/{user_id}/admin": {
+            "patch": {
+                "tags": ["Users"],
+                "summary": "Torna usuário em administrador",
+                "description": "Torna usuário em administrador",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+            
         }
-
     }
 }
